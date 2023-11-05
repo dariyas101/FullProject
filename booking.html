@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #4caf50;
+        }
+
+        .flight-list {
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        td {
+            background-color: #f2f2f2;
+        }
+
+        .book-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .book-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Booking Confirmation Page</h1>
+        <p>Review the available flights and secure your booking.</p>
+        <a href="profile.html" style="text-decoration: none; color: #4caf50; font-weight: bold;">&lt; Back to
+            Profile</a>
+
+        <section id="booking" class="flight-list">
+            <h2>Available Flights</h2>
+            <table>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Departure Time</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>FL123</td>
+                    <td>Astana</td>
+                    <td>Almaty</td>
+                    <td>08:00 AM</td>
+                    <td>$250</td>
+                    <td><a href="#" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>AQ097</td>
+                    <td>Aqtau</td>
+                    <td>Baku</td>
+                    <td>12:00 AM</td>
+                    <td>$100</td>
+                    <td><a href="#" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>KZ777</td>
+                    <td>Almaty</td>
+                    <td>Dubai</td>
+                    <td>06:00 PM</td>
+                    <td>$300</td>
+                    <td><a href="#" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>AX435</td>
+                    <td>Aqtobe</td>
+                    <td>Astana</td>
+                    <td>10:00 AM</td>
+                    <td>$180</td>
+                    <td><a href="#" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>BJ954</td>
+                    <td>Beijing</td>
+                    <td>HongKong</td>
+                    <td>07:00 PM</td>
+                    <td>$150</td>
+                    <td><a href="#" class="book-btn">Book Now</a></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>

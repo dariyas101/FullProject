@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+        }
+
+        .word-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .letter-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: move;
+        }
+
+        .drop-container {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Interactive Web Page!</h1>
+    <div class="box" id="box1">Box 1</div>
+    <div class="box" id="box2">Box 2</div>
+
+    <script>
+        const box1 = {
+            element: document.getElementById("box1"),
+            text: "Box 1"
+        };
+
+        const box2 = {
+            element: document.getElementById("box2"),
+            text: "Box 2"
+        };
+
+        function addHoverEffect(box) {
+            box.element.addEventListener("mouseover", function () {
+                box.element.style.backgroundColor = "green";
+                playHoverSound();
+            });
+            box.element.addEventListener("mouseout", function () {
+                box.element.style.backgroundColor = "orange";
+            });
+        }
+
+        function playHoverSound() {
+            const hoverSound = new Audio("sound1.mp3");
+            hoverSound.play();
+        }
+
+        function moveElement() {
+            let position = 0;
+            const interval = setInterval(function () {
+                position += 5;
+                box1.element.style.left = position + "px";
+                if (position >= 200) {
+                    clearInterval(interval);
+                }
+            }, 30);
+        }
+
+        function playClickSound() {
+            const clickSound = new Audio("sound2.wav");
+            clickSound.play();
+        }
+
+        box1.element.addEventListener("click", function () {
+            moveElement();
+            playClickSound();
+        });
+
+        addHoverEffect(box1);
+        addHoverEffect(box2);
+
+    </script>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="puzzle-container">
+                    <div id="wordContainer" class="word-container">
+                        <div class="letter-box" data-letter="S">S</div>
+                        <div class="letter-box" data-letter="A">A</div>
+                        <div class="letter-box" data-letter="M">M</div>
+                        <div class="letter-box" data-letter="P">P</div>
+                    </div>
+                    <div id="dropContainer" class="drop-container">
+                        <!-- The correct order of letters will be placed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const letterBoxes = document.querySelectorAll('.letter-box');
+        const dropContainer = document.getElementById('dropContainer');
+
+        letterBoxes.forEach(letterBox => {
+            letterBox.addEventListener('dragstart', dragStart);
+            letterBox.setAttribute('draggable', 'true');
+        });
+
+        dropContainer.addEventListener('dragover', dragOver);
+        dropContainer.addEventListener('dragenter', dragEnter);
+        dropContainer.addEventListener('dragleave', dragLeave);
+        dropContainer.addEventListener('drop', dragDrop);
+
+        function dragStart(event) {
+            event.dataTransfer.setData('text', event.target.dataset.letter);
+        }
+
+        function dragOver(event) {
+            event.preventDefault();
+        }
+
+        function dragEnter(event) {
+            event.preventDefault();
+            dropContainer.style.border = '2px dashed #000';
+        }
+
+        function dragLeave() {
+            dropContainer.style.border = '1px solid #000';
+        }
+
+        function dragDrop(event) {
+            event.preventDefault();
+            dropContainer.style.border = '1px solid #000';
+            const letter = event.dataTransfer.getData('text');
+            const letterElement = document.createElement('div');
+            letterElement.textContent = letter;
+            letterElement.classList.add('letter-box');
+            dropContainer.appendChild(letterElement);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
